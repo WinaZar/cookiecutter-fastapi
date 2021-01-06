@@ -9,6 +9,7 @@ from backend.cache import get_cache_backend
 from backend.utils import base_error_handler
 from backend.routes import api_router
 
+
 from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 
@@ -51,7 +52,7 @@ def create_app(config: Configuration) -> BackendApp:
     )
     app.state.config = config
 
-    app.include_router(api_router, prefix="/api/v1")
+    app.include_router(api_router)
 
     app.router.add_event_handler("startup", create_startup_hook(app))
     app.router.add_event_handler("shutdown", create_shutdown_hook(app))
