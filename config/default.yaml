@@ -2,6 +2,9 @@ server:
   host: 0.0.0.0
   port: 8888
 
+database:
+  dsn: postgresql+asyncpg://user:password@localhost:5432/backend
+
 cache:
   dsn: redis://localhost:6379
 

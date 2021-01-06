@@ -1,12 +1,15 @@
 from typing import Any
 
 from aioredis.commands import Redis
+from sqlalchemy.ext.asyncio.engine import AsyncEngine
+
 from backend.config import Configuration
 
 
 class AppState:
     cache: Redis
     config: Configuration
+    engine: AsyncEngine
 
 
 class BaseError(Exception):

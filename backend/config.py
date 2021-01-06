@@ -3,8 +3,8 @@ from pathlib import Path
 from typing import Literal, Optional, cast
 
 import sentry_sdk
-from pydantic import BaseModel, RedisDsn, StrictStr, HttpUrl, PositiveInt
 from dynaconf import Dynaconf
+from pydantic import BaseModel, HttpUrl, PositiveInt, RedisDsn, StrictStr
 
 APP_ENV = Literal["development", "testing", "production"]
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -19,9 +19,14 @@ class ServerConfiguration(BaseModel):
     port: PositiveInt
 
 
+class DatabaseConfiguration(BaseModel):
+    dsn: str
+
+
 class Configuration(BaseModel):
     cache: CacheConfiguration
     server: ServerConfiguration
+    database: DatabaseConfiguration
     environment: StrictStr
     sentry_dsn: Optional[HttpUrl]
     debug: bool

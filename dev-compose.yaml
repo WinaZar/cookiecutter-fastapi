@@ -5,3 +5,18 @@ services:
     image: redis:alpine
     ports:
       - "${REDIS_PORT:-6379}:6379"
+    restart: unless-stopped
+  postgres:
+    image: postgres:12
+    environment:
+      - "POSTGRES_USER=${POSTGRES_USER:-user}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}"
+      - "POSTGRES_DB=${POSTGRES_DB:-backend}"
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    restart: unless-stopped
+    volumes:
+      - graphql-backend-db:/var/lib/postgresql/data
+
+volumes:
+  graphql-backend-db:
