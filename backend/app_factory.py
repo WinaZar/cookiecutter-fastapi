@@ -6,7 +6,7 @@ from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
 from backend.cache import get_cache_backend
 from backend.config import Configuration, setup_sentry
-from backend.db import get_engine
+from backend.db.utils import get_engine
 from backend.logging import setup_logging
 from backend.routes import api_router
 from backend.types import AppState, BaseError
