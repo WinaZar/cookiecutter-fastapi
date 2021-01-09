@@ -11,7 +11,7 @@ from backend.db.utils import get_engine
 app = typer.Typer()
 
 
-async def _init_database():
+async def _init_database() -> None:
     config = load_configuration()
     engine = get_engine(config.database)
     async with engine.begin() as conn:
@@ -19,7 +19,7 @@ async def _init_database():
         await conn.run_sync(Base.metadata.create_all)
 
 
-async def _create_user(username: str, password: str):
+async def _create_user(username: str, password: str) -> None:
     config = load_configuration()
     engine = get_engine(config.database)
     async with AsyncSession(engine) as session:
@@ -27,18 +27,18 @@ async def _create_user(username: str, password: str):
 
 
 @app.command()
-def dummy():
+def dummy() -> None:
     typer.echo("Dummy command")
 
 
 @app.command()
-def initdb():
+def initdb() -> None:
     asyncio.run(_init_database())
     typer.echo("Database was created")
 
 
 @app.command()
-def create_new_user(username: str, password: str):
+def create_new_user(username: str, password: str) -> None:
     asyncio.run(_create_user(username, password))
     typer.echo("New user was created")
 

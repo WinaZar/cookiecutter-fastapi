@@ -29,6 +29,8 @@ class Configuration(BaseModel):
     database: DatabaseConfiguration
     environment: StrictStr
     sentry_dsn: Optional[HttpUrl]
+    secret_key: str
+    jwt_algorithm: str = "HS256"
     debug: bool
 
 

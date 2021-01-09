@@ -30,6 +30,8 @@ def create_shutdown_hook(app: BackendApp) -> Callable[[], Coroutine[None, None, 
         if app.state.cache is not None:
             app.state.cache.close()
             await app.state.cache.wait_closed()
+        if app.state.engine is not None:
+            await app.state.engine.dispose()
 
     return shutdown_hook
 

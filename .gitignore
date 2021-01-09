@@ -141,3 +141,4 @@ cython_debug/
 .envrc
 *.local.yaml
 .secrets.yaml
+*.ipynb

@@ -9,3 +9,4 @@ cache:
   dsn: redis://localhost:6379
 
 debug: false
+secret_key: secret$key
