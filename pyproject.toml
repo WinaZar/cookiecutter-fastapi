@@ -16,6 +16,7 @@ SQLAlchemy = {version = "^1.3.22", allow-prereleases = true}
 asyncpg = "^0.21.0"
 passlib = "^1.7.4"
 Authlib = "^0.15.2"
+graphene-sqlalchemy = "^2.3.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.4"
