@@ -43,6 +43,8 @@ async def obtain_token(
     return {"access_token": token, "token_type": "bearer"}
 
 
-@api_router.api_route("/graphql", methods=["GET", "POST"])
+@api_router.api_route(
+    "/graphql", methods=["GET", "POST"], dependencies=[Depends(get_user)]
+)
 async def graphql_endpoint(request: Request) -> Response:
     return await graphql_app.handle_graphql(request)

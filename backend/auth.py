@@ -36,9 +36,9 @@ def generate_jwt(config: Configuration, user: User) -> str:
         "iss": "GraphQLBackend",
         "sub": str(user.id),
         "username": user.username,
-        "exp": datetime.utcnow() + timedelta(minutes=15),
+        "exp": datetime.utcnow() + timedelta(minutes=config.jwt.expire_min),
     }
-    header = {"alg": config.jwt_algorithm}
+    header = {"alg": config.jwt.algorithm}
     token: bytes = jwt.encode(header, payload, config.secret_key)
     return token.decode("utf-8")
 

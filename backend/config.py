@@ -23,6 +23,11 @@ class DatabaseConfiguration(BaseModel):
     dsn: str
 
 
+class JWTConfiguration(BaseModel):
+    algorithm: str = "HS256"
+    expire_min: int = 300
+
+
 class Configuration(BaseModel):
     cache: CacheConfiguration
     server: ServerConfiguration
@@ -30,7 +35,7 @@ class Configuration(BaseModel):
     environment: StrictStr
     sentry_dsn: Optional[HttpUrl]
     secret_key: str
-    jwt_algorithm: str = "HS256"
+    jwt: JWTConfiguration = JWTConfiguration()
     debug: bool
 
 

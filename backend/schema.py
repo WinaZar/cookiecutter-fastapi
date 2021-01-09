@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 import graphene
 from fastapi import Request
@@ -23,12 +23,17 @@ class UserSchema(SQLAlchemyObjectType):
 
 
 class RootQuery(graphene.ObjectType):
-    all_users = graphene.List(UserSchema)
+    users = graphene.List(UserSchema, ids=graphene.List(graphene.Int))
 
-    async def resolve_all_users(self, info: ResolveInfo) -> List[User]:
+    async def resolve_users(
+        self, info: ResolveInfo, ids: Optional[List[int]] = None
+    ) -> List[User]:
         engine = await _get_engine(info)
+        statement = select(User)
+        if ids:
+            statement = statement.filter(User.id.in_(ids))
         async with AsyncSession(engine) as session:
-            query_result = await session.execute(select(User))
+            query_result = await session.execute(statement)
         users: List[User] = query_result.scalars().fetchall()
         return users
 
