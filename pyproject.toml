@@ -25,6 +25,9 @@ mypy = "^0.790"
 typer = "^0.3.2"
 ipdb = "^0.13.4"
 ipykernel = "^5.4.2"
+invoke = "^1.5.0"
+pytest = "^6.2.1"
+testcontainers = {version = "^3.2.0", extras = ["postgresql", "redis"]}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

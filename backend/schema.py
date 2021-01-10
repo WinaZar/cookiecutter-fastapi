@@ -22,7 +22,7 @@ class UserSchema(SQLAlchemyObjectType):
         exclude_fields = ["password"]
 
 
-class RootQuery(graphene.ObjectType):
+class UsersQuery(graphene.ObjectType):
     users = graphene.List(UserSchema, ids=graphene.List(graphene.Int))
 
     async def resolve_users(
@@ -36,6 +36,10 @@ class RootQuery(graphene.ObjectType):
             query_result = await session.execute(statement)
         users: List[User] = query_result.scalars().fetchall()
         return users
+
+
+class RootQuery(UsersQuery, graphene.ObjectType):
+    pass
 
 
 schema = graphene.Schema(query=RootQuery, auto_camelcase=False)
