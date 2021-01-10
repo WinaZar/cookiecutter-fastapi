@@ -3,7 +3,7 @@ import asyncio
 import typer
 from sqlalchemy.ext.asyncio.session import AsyncSession
 
-from backend.auth import create_user
+from backend.auth.utils import create_user
 from backend.config import load_configuration
 from backend.db.models import Base
 from backend.db.utils import get_engine

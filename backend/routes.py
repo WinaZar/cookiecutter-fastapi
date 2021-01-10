@@ -8,9 +8,11 @@ from sqlalchemy.ext.asyncio.session import AsyncSession
 from starlette.graphql import GraphQLApp
 from starlette.responses import PlainTextResponse
 
-from backend.auth import authenticate_user, generate_jwt
+from backend.auth.dependencies import get_user
+from backend.auth.utils import authenticate_user, generate_jwt
 from backend.config import Configuration
-from backend.dependencies import get_config, get_session, get_user
+from backend.db.dependencies import get_session
+from backend.dependencies import get_config
 from backend.schema import schema
 
 

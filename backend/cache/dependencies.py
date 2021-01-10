@@ -1,12 +1,12 @@
 from typing import cast
 
+from aioredis.commands import Redis
 from fastapi import Request
 
-from backend.config import Configuration
 from backend.types import AppState
 
 
-async def get_config(request: Request) -> Configuration:
+async def get_cache(request: Request) -> Redis:
     state = cast(AppState, request.app.state)
 
-    return state.config
+    return state.cache

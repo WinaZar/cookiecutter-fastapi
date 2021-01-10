@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
-from backend.cache import get_cache_backend
+from backend.cache.utils import get_cache_backend
 from backend.config import Configuration, setup_sentry
 from backend.db.utils import get_engine
 from backend.logging import setup_logging
