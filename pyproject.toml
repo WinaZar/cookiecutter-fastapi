@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "myproject"
+name = "GraphQL FastAPI Boilerplate"
 version = "0.1.0"
-description = "Myproject backend"
+description = "GraphQL FastAPI Boilerplate"
 authors = ["Stepan Nazarov <stepanartov@gmail.com>"]
 license = "MIT"
 

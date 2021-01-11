@@ -11,6 +11,14 @@ def dev(c):
 
 
 @task
+def initdb(c):
+    """
+    Clear and init new database
+    """
+    c.run("python -m backend.cli initdb", pty=True)
+
+
+@task
 def create_user(c, username, password):
     """
     Create new user in database
