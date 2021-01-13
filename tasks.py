@@ -11,11 +11,19 @@ def dev(c):
 
 
 @task
-def initdb(c):
+def db_upgrade(c):
     """
-    Clear and init new database
+    Apply alembic migrations
     """
-    c.run("python -m backend.cli initdb", pty=True)
+    c.run("PYTHONPATH=. alembic upgrade head", pty=True)
+
+
+@task
+def generate_migration(c, message):
+    """
+    Generate new migration with alembic
+    """
+    c.run(f"PYTHONPATH=. alembic revision --autogenerate -m '{message}'")
 
 
 @task

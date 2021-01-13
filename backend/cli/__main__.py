@@ -32,12 +32,6 @@ def dummy() -> None:
 
 
 @app.command()
-def initdb() -> None:
-    asyncio.run(_init_database())
-    typer.echo("Database was created")
-
-
-@app.command()
 def create_new_user(username: str, password: str) -> None:
     asyncio.run(_create_user(username, password))
     typer.echo("New user was created")

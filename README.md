@@ -1,6 +1,6 @@
 # GraphQL FastAPI Boilerplate
 
-![version](https://img.shields.io/badge/version-0.1.0-blue) ![python](https://img.shields.io/badge/python-3.8-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.63.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
+![version](https://img.shields.io/badge/version-0.1.1-blue) ![python](https://img.shields.io/badge/python-3.8-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.63.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 
 This project is a boilerplate for FastaAPI GraphQL apps.
 
@@ -50,7 +50,7 @@ pre-commit install
 
 Init new database and create your first user:
 ```sh
-invoke initdb
+invoke db-upgrade
 invoke create-user test test
 ```
 
