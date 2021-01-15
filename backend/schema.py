@@ -12,7 +12,7 @@ from backend.db.models import User
 
 
 async def _get_engine(info: ResolveInfo) -> AsyncEngine:
-    request: Request = info.context["request"]
+    request: Request = info.context["request"]  # type: ignore
     return request.app.state.engine
 
 

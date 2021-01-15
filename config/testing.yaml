@@ -1,1 +1,7 @@
+database:
+  dsn: postgresql+psycopg2://user:password@localhost:5432/backend
+
+cache:
+  dsn: redis://localhost:6379
+
 debug: true

@@ -1,0 +1,73 @@
+name: Run lint and tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: backend
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install poetry
+        run: |
+          pip install poetry
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-poetry-dependencies
+        with:
+          path: .venv
+          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-test-${{ env.cache-name }}-
+      - name: Install dependencies
+        run: |
+          poetry install --no-root
+      - name: Lint
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          poetry run flake8 backend tests --count --show-source --statistics
+      - name: Run mypy
+        run: |
+          poetry run mypy backend
+      - name: Run tests
+        env:
+          FASTAPI_BACKEND_tests__testcontainers: false
+        run: |
+          poetry run pytest --junitxml=junit/test-results.xml --cov=backend --cov-report=xml --cov-report=html
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-results
+          path: junit/test-results.xml

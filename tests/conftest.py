@@ -15,32 +15,39 @@ from backend.db.models import Base, User
 
 
 def pytest_configure(config: Config) -> None:
-    config.database_container = PostgresContainer(
-        image="postgres:12",
-        user="user",
-        password="password",
-        dbname="backend",
-    )
-    config.redis_container = RedisContainer(image="redis:alpine")
-    config.database_container.start()
-    config.redis_container.start()
+    app_config = load_configuration("testing")
+    if app_config.tests.testcontainers:
+        config.database_container = PostgresContainer(
+            image="postgres:12",
+            user="user",
+            password="password",
+            dbname="backend",
+        )
+        config.redis_container = RedisContainer(image="redis:alpine")
+        config.database_container.start()
+        config.redis_container.start()
 
 
 def pytest_unconfigure(config: Config) -> None:
-    config.database_container.stop()
-    config.redis_container.stop()
+    app_config = load_configuration("testing")
+    if app_config.tests.testcontainers:
+        config.database_container.stop()
+        config.redis_container.stop()
 
 
 @pytest.fixture()
 def test_config(pytestconfig: Config) -> Configuration:
     config = load_configuration("testing")
-    config.database.dsn = pytestconfig.database_container.get_connection_url().replace(
-        "psycopg2", "asyncpg"
-    )
-    redis_exposed_port = pytestconfig.redis_container.get_exposed_port(
-        pytestconfig.redis_container.port_to_expose
-    )
-    config.cache.dsn = f"redis://localhost:{redis_exposed_port}"
+    if config.tests.testcontainers:
+        config.database.dsn = (
+            pytestconfig.database_container.get_connection_url().replace(
+                "psycopg2", "asyncpg"
+            )
+        )
+        redis_exposed_port = pytestconfig.redis_container.get_exposed_port(
+            pytestconfig.redis_container.port_to_expose
+        )
+        config.cache.dsn = f"redis://localhost:{redis_exposed_port}"
     return config
 
 
@@ -55,8 +62,12 @@ def test_client(test_app: False) -> TestClient:
 
 
 @pytest.fixture()
-def database_session(pytestconfig: Config) -> Session:
-    engine = create_engine(pytestconfig.database_container.get_connection_url())
+def database_session(pytestconfig: Config, test_config: Configuration) -> Session:
+    if test_config.tests.testcontainers:
+        db_url = pytestconfig.database_container.get_connection_url()
+    else:
+        db_url = test_config.database.dsn
+    engine = create_engine(db_url)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()

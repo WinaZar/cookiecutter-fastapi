@@ -28,6 +28,10 @@ class JWTConfiguration(BaseModel):
     expire_min: int = 300
 
 
+class TestsConfiguration(BaseModel):
+    testcontainers: bool = True
+
+
 class Configuration(BaseModel):
     cache: CacheConfiguration
     server: ServerConfiguration
@@ -37,6 +41,7 @@ class Configuration(BaseModel):
     secret_key: str
     jwt: JWTConfiguration = JWTConfiguration()
     debug: bool
+    tests: TestsConfiguration = TestsConfiguration()
 
 
 def load_configuration(env: Optional[APP_ENV] = None) -> Configuration:
@@ -48,7 +53,7 @@ def load_configuration(env: Optional[APP_ENV] = None) -> Configuration:
         load_dotenv=True,
         merge_enabled=True,
         root_path=str(PROJECT_ROOT / "config"),
-        envvar_prefix="MYPROJECT",
+        envvar_prefix="FASTAPI_BACKEND",
     )
 
     config_dict = {"environment": env}

@@ -142,3 +142,4 @@ cython_debug/
 *.local.yaml
 .secrets.yaml
 *.ipynb
+junit
