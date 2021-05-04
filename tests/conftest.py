@@ -39,15 +39,12 @@ def pytest_unconfigure(config: Config) -> None:
 def test_config(pytestconfig: Config) -> Configuration:
     config = load_configuration("testing")
     if config.tests.testcontainers:
-        config.database.dsn = (
-            pytestconfig.database_container.get_connection_url().replace(
-                "psycopg2", "asyncpg"
-            )
-        )
+        config.database.dsn = pytestconfig.database_container.get_connection_url()
         redis_exposed_port = pytestconfig.redis_container.get_exposed_port(
             pytestconfig.redis_container.port_to_expose
         )
         config.cache.dsn = f"redis://localhost:{redis_exposed_port}"
+    config.database.dsn = config.database.dsn.replace("psycopg2", "asyncpg")
     return config
 
 
@@ -66,7 +63,7 @@ def database_session(pytestconfig: Config, test_config: Configuration) -> Sessio
     if test_config.tests.testcontainers:
         db_url = pytestconfig.database_container.get_connection_url()
     else:
-        db_url = test_config.database.dsn
+        db_url = test_config.database.dsn.replace("asyncpg", "psycopg2")
     engine = create_engine(db_url)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)

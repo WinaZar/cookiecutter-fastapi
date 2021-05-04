@@ -1,6 +1,6 @@
 # GraphQL FastAPI Boilerplate
 
-![version](https://img.shields.io/badge/version-0.1.2-blue) ![python](https://img.shields.io/badge/python-3.8-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.63.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
+![version](https://img.shields.io/badge/version-0.1.3-blue) ![python](https://img.shields.io/badge/python-3.8-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.63.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 
 This project is a boilerplate for FastaAPI GraphQL apps.
 
@@ -11,7 +11,7 @@ It's powered with:
 - [Invoke](https://github.com/pyinvoke/invoke) - task management
 - [Dynaconf](https://github.com/rochacbruno/dynaconf) - configuration management
 - [Loguru](https://github.com/Delgan/loguru) - logging system
-- [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy) - ORM (1.4.0b1 with async capabilities)
+- [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy) - ORM
 - [Graphene](https://github.com/graphql-python/graphene) - GraphQL framework
 - [pytest](https://github.com/pytest-dev/pytest) - tests
 
