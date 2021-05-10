@@ -53,8 +53,8 @@ jobs:
         env:
           cache-name: cache-poetry-dependencies
         with:
-          path: ${{ project-working-directory }}/.venv
-          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles(env.project-working-directory + '/poetry.lock') }}
+          path: ${{ env.project-working-directory }}/.venv
+          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles(format('{0}/poetry.lock', env.project-working-directory)) }}
           restore-keys: |
             ${{ runner.os }}-test-${{ env.cache-name }}-
       - name: Install dependencies
