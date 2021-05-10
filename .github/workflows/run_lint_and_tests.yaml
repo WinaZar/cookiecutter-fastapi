@@ -9,6 +9,8 @@ on:
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
+    env:
+      project-working-directory: ./backend
 
     services:
       postgres:
@@ -39,29 +41,37 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - name: Install poetry
+      - name: Install poetry and cookiecutter
         run: |
           pip install poetry
+          pip install cookiecutter
+      - name: Setup cookiecutter project
+        run: |
+          cookiecutter --no-input ./ project_name=backend
       - name: Cache dependencies
         uses: actions/cache@v2
         env:
           cache-name: cache-poetry-dependencies
         with:
-          path: .venv
-          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles('poetry.lock') }}
+          path: ${{ project-working-directory }}/.venv
+          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles(env.project-working-directory + '/poetry.lock') }}
           restore-keys: |
             ${{ runner.os }}-test-${{ env.cache-name }}-
       - name: Install dependencies
+        working-directory: ${{ env.project-working-directory }}
         run: |
           poetry install --no-root
       - name: Lint
+        working-directory: ${{ env.project-working-directory }}
         run: |
           # stop the build if there are Python syntax errors or undefined names
           poetry run flake8 backend tests --count --show-source --statistics
       - name: Run mypy
+        working-directory: ${{ env.project-working-directory }}
         run: |
           poetry run mypy backend
       - name: Run tests
+        working-directory: ${{ env.project-working-directory }}
         env:
           FASTAPI_BACKEND_tests__testcontainers: false
         run: |
@@ -70,4 +80,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: pytest-results
-          path: junit/test-results.xml
+          path: ${{ env.project-working-directory }}/junit/test-results.xml

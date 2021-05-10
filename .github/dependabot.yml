@@ -1,6 +1,6 @@
 version: 2
 updates:
-  - directory: "/"
+  - directory: "/{{cookiecutter.project_slug}}"
     open-pull-requests-limit: 5
     package-ecosystem: "pip"
     rebase-strategy: auto
