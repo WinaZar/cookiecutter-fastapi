@@ -19,7 +19,7 @@ Authlib = "^0.15.2"
 graphene-sqlalchemy = "^2.3.0"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.9.1"
+flake8 = "^3.9.2"
 pre-commit = "^2.12.1"
 mypy = "^0.812"
 typer = "^0.3.2"
