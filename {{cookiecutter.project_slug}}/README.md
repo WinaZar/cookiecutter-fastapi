@@ -1,7 +1,6 @@
 # {{cookiecutter.project_name}}
 
-![version](https://img.shields.io/badge/version-0.1.3-blue) ![python](https://img.shields.io/badge/python-3.8-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.63.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
-
+![python](https://img.shields.io/badge/python-3.9-blue) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 
 ## Setup
 
@@ -9,7 +8,7 @@ Clone repo.
 
 Install dependencies:
 ```sh
-poetry env use 3.8
+poetry env use 3.9
 poetry install --no-root
 ```
 
