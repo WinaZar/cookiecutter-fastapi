@@ -27,7 +27,7 @@ ipdb = "^0.13.7"
 ipykernel = "^5.5.4"
 invoke = "^1.5.0"
 pytest = "^6.2.4"
-testcontainers = {version = "^3.2.0", extras = ["postgresql", "redis"]}
+testcontainers = {version = "^3.4.1", extras = ["postgresql", "redis"]}
 alembic = "^1.6.2"
 pytest-cov = "^2.10.1"
 
