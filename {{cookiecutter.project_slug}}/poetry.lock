@@ -1180,7 +1180,7 @@ full = ["aiofiles", "graphene", "itsdangerous", "jinja2", "python-multipart", "p
 
 [[package]]
 name = "testcontainers"
-version = "3.4.0"
+version = "3.4.1"
 description = "Library provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container"
 category = "dev"
 optional = false
@@ -1393,7 +1393,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "f6530ee057c3083c6d541d0bfc8e5f44cd38adda4eac2f22e086318dea0ed0df"
+content-hash = "78a725ddcd94cd49cb6fe4be2847b98ac26c4643adf8184d48ca2db7fce75e45"
 
 [metadata.files]
 aiofiles = [
@@ -2244,7 +2244,7 @@ starlette = [
     {file = "starlette-0.14.2.tar.gz", hash = "sha256:7d49f4a27f8742262ef1470608c59ddbc66baf37c148e938c7038e6bc7a998aa"},
 ]
 testcontainers = [
-    {file = "testcontainers-3.4.0-py2.py3-none-any.whl", hash = "sha256:fa0c8bce4d5a0e338fc9b36c946d74f8357f57ab2466e8c85f1fb4bd3d506d0e"},
+    {file = "testcontainers-3.4.1-py2.py3-none-any.whl", hash = "sha256:7626f2899f869b929c14b8eb4996b1e70a4b4bd1934de500be193db89b18f7cc"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
