@@ -21,7 +21,7 @@ graphene-sqlalchemy = "^2.3.0"
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
 pre-commit = "^2.13.0"
-mypy = "^0.902"
+mypy = "^0.910"
 typer = "^0.3.2"
 ipdb = "^0.13.9"
 ipykernel = "^5.5.5"
