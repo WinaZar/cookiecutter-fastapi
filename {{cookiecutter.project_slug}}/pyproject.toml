@@ -25,7 +25,7 @@ mypy = "^0.910"
 typer = "^0.3.2"
 ipdb = "^0.13.9"
 ipykernel = "^6.0.1"
-invoke = "^1.5.0"
+invoke = "^1.6.0"
 pytest = "^6.2.4"
 testcontainers = {version = "^3.4.1", extras = ["postgresql", "redis"]}
 alembic = "^1.6.5"
