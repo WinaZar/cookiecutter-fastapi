@@ -28,7 +28,7 @@ def create_startup_hook(app: BackendApp) -> Callable[[], Coroutine[None, None, N
 def create_shutdown_hook(app: BackendApp) -> Callable[[], Coroutine[None, None, None]]:
     async def shutdown_hook() -> None:
         if app.state.cache is not None:
-            await app.state.cache.close()
+            await app.state.cache.close()  # type: ignore
             await app.state.cache.connection_pool.disconnect()
         if app.state.engine is not None:
             await app.state.engine.dispose()

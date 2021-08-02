@@ -45,4 +45,4 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
-          [fastapi==0.65.0, pydantic==1.8.1, typer==0.3.2]
+          [fastapi==0.68.0, pydantic==1.8.2, typer==0.3.2]
