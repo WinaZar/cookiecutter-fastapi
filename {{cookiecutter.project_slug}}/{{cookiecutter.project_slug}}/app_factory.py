@@ -19,7 +19,7 @@ class BackendApp(FastAPI):
 
 def create_startup_hook(app: BackendApp) -> Callable[[], Coroutine[None, None, None]]:
     async def startup_hook() -> None:
-        app.state.cache = await get_cache_backend(app.state.config.cache)
+        app.state.cache = get_cache_backend(app.state.config.cache)
         app.state.engine = get_engine(app.state.config.database)
 
     return startup_hook
@@ -28,8 +28,8 @@ def create_startup_hook(app: BackendApp) -> Callable[[], Coroutine[None, None, N
 def create_shutdown_hook(app: BackendApp) -> Callable[[], Coroutine[None, None, None]]:
     async def shutdown_hook() -> None:
         if app.state.cache is not None:
-            app.state.cache.close()
-            await app.state.cache.wait_closed()
+            await app.state.cache.close()
+            await app.state.cache.connection_pool.disconnect()
         if app.state.engine is not None:
             await app.state.engine.dispose()
 

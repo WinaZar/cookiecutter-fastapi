@@ -1,6 +1,6 @@
 from typing import Any
 
-from aioredis.commands import Redis
+from aioredis import Redis
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
 
 from {{cookiecutter.project_slug}}.config import Configuration

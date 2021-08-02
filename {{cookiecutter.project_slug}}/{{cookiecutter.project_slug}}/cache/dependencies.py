@@ -1,6 +1,6 @@
 from typing import cast
 
-from aioredis.commands import Redis
+from aioredis import Redis
 from fastapi import Request
 
 from {{cookiecutter.project_slug}}.types import AppState

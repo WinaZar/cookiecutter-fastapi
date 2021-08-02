@@ -1,6 +1,6 @@
 # Cookiecutter FastAPI
 
-![version](https://img.shields.io/badge/version-0.1.4-blue) ![python](https://img.shields.io/badge/python-3.9-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.65.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black) <a href="https://codeclimate.com/github/WinaZar/cookiecutter-fastapi/maintainability"><img src="https://api.codeclimate.com/v1/badges/3d7b7123250e43cc43c1/maintainability" /></a>
+![version](https://img.shields.io/badge/version-0.1.5-blue) ![python](https://img.shields.io/badge/python-3.9-blue) [![FastAPI](https://img.shields.io/badge/fastapi-0.68.0-brightgreen)](https://github.com/tiangolo/fastapi) [![Code style black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black) <a href="https://codeclimate.com/github/WinaZar/cookiecutter-fastapi/maintainability"><img src="https://api.codeclimate.com/v1/badges/3d7b7123250e43cc43c1/maintainability" /></a>
 
 <img src='./images/logo.png' width=250 height=250>
 
