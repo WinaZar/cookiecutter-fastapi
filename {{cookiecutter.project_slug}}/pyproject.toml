@@ -20,7 +20,7 @@ graphene-sqlalchemy = "^2.3.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
-pre-commit = "^2.14.0"
+pre-commit = "^2.14.1"
 mypy = "^0.910"
 typer = "^0.3.2"
 ipdb = "^0.13.9"
