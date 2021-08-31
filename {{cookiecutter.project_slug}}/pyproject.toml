@@ -24,7 +24,7 @@ pre-commit = "^2.14.1"
 mypy = "^0.910"
 typer = "^0.3.2"
 ipdb = "^0.13.9"
-ipykernel = "^6.2.0"
+ipykernel = "^6.3.1"
 invoke = "^1.6.0"
 pytest = "^6.2.4"
 testcontainers = {version = "^3.4.2", extras = ["postgresql", "redis"]}
