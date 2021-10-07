@@ -28,7 +28,7 @@ ipykernel = "^6.2.0"
 invoke = "^1.6.0"
 pytest = "^6.2.4"
 testcontainers = {version = "^3.4.2", extras = ["postgresql", "redis"]}
-alembic = "^1.6.5"
+alembic = "^1.7.4"
 pytest-cov = "^2.12.1"
 
 [build-system]
