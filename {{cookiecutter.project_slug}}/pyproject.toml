@@ -15,7 +15,7 @@ aioredis = "^2.0.0"
 SQLAlchemy = "^1.4.23"
 asyncpg = "^0.24.0"
 passlib = "^1.7.4"
-Authlib = "^0.15.4"
+Authlib = "^0.15.5"
 graphene-sqlalchemy = "^2.3.0"
 
 [tool.poetry.dev-dependencies]
