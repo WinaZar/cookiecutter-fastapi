@@ -29,7 +29,7 @@ invoke = "^1.6.0"
 pytest = "^6.2.5"
 testcontainers = {version = "^3.4.2", extras = ["postgresql", "redis"]}
 alembic = "^1.7.5"
-pytest-cov = "^2.12.1"
+pytest-cov = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
