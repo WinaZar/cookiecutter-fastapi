@@ -121,7 +121,7 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 
 [[package]]
 name = "authlib"
-version = "0.15.4"
+version = "0.15.5"
 description = "The ultimate Python library in building OAuth and OpenID Connect servers."
 category = "main"
 optional = false
@@ -1393,7 +1393,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "da8fa9163f9f9e9b47e0411378a01832a448c1080e2da4827ca19302ac1670e2"
+content-hash = "87565654bb600cea2754fc459502426263322bfd1bcb2aeebff63f0acb79cafd"
 
 [metadata.files]
 aiofiles = [
@@ -1456,8 +1456,8 @@ attrs = [
     {file = "attrs-20.3.0.tar.gz", hash = "sha256:832aa3cde19744e49938b91fea06d69ecb9e649c93ba974535d08ad92164f700"},
 ]
 authlib = [
-    {file = "Authlib-0.15.4-py2.py3-none-any.whl", hash = "sha256:d9fe5edb59801b16583faa86f88d798d99d952979b9616d5c735b9170b41ae2c"},
-    {file = "Authlib-0.15.4.tar.gz", hash = "sha256:37df3a2554bc6fe0da3cc6848c44fac2ae40634a7f8fc72543947f4330b26464"},
+    {file = "Authlib-0.15.5-py2.py3-none-any.whl", hash = "sha256:ecf4a7a9f2508c0bb07e93a752dd3c495cfaffc20e864ef0ffc95e3f40d2abaf"},
+    {file = "Authlib-0.15.5.tar.gz", hash = "sha256:b83cf6360c8e92b0e9df0d1f32d675790bcc4e3c03977499b1eed24dcdef4252"},
 ]
 backcall = [
     {file = "backcall-0.2.0-py2.py3-none-any.whl", hash = "sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255"},
