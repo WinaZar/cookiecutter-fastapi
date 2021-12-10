@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = {version = "^0.68.1", extras = ["all"]}
+fastapi = {version = "^0.70.0", extras = ["all"]}
 dynaconf = "^3.1.7"
 sentry-sdk = "^1.5.0"
 loguru = "^0.5.3"
